@@ -1,0 +1,18 @@
+# ReGenesis AI Automation Logic
+
+import random
+import time
+
+while True:
+
+    temp = random.randint(20, 50)
+    gas = random.randint(100, 700)
+
+    print(f"Temp: {temp}°C | Gas: {gas}")
+
+    if temp > 40 or gas > 400:
+        print("🚨 ALERT ACTIVATED")
+    else:
+        print("✅ SAFE")
+
+    time.sleep(2)

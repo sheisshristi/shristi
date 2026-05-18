@@ -1,0 +1,82 @@
+// ===============================
+// ReGenesis Smart Alert System
+// ===============================
+
+// Components:
+// Buzzer
+// LED
+// MQ2 Gas Sensor
+// DHT11 Sensor
+
+#include <DHT.h>
+
+// ---------- DHT11 ----------
+#define DHTPIN 2
+#define DHTTYPE DHT11
+DHT dht(DHTPIN, DHTTYPE);
+
+// ---------- MQ2 ----------
+#define MQ2_PIN A0
+
+// ---------- Alert Devices ----------
+#define BUZZER 8
+#define RED_LED 9
+#define GREEN_LED 10
+
+void setup() {
+
+  Serial.begin(9600);
+
+  dht.begin();
+
+  pinMode(BUZZER, OUTPUT);
+  pinMode(RED_LED, OUTPUT);
+  pinMode(GREEN_LED, OUTPUT);
+
+  Serial.println("=== ReGenesis Alert System Active ===");
+}
+
+void loop() {
+
+  // Read Sensors
+  float temperature = dht.readTemperature();
+  int gasValue = analogRead(MQ2_PIN);
+
+  // Display Readings
+  Serial.print("Temperature: ");
+  Serial.print(temperature);
+  Serial.println(" °C");
+
+  Serial.print("Gas Level: ");
+  Serial.println(gasValue);
+
+  // ===============================
+// ===============================
+
+  if (gasValue > 400 || temperature > 40) {
+
+    // Danger Alert
+    digitalWrite(RED_LED, HIGH);
+    digitalWrite(GREEN_LED, LOW);
+
+    tone(BUZZER, 1000); // Buzzer sound
+
+    Serial.println("⚠ WARNING: Hazard Detected!");
+
+  } else {
+
+    // Safe Condition
+    digitalWrite(RED_LED, LOW);
+    digitalWrite(GREEN_LED, HIGH);
+
+    noTone(BUZZER);
+
+    Serial.println("✅ Environment Safe");
+  }
+
+  Serial.println("-----------------------");
+
+  delay(2000);
+}
+  // ALERT CONDITIONS
+  // ================

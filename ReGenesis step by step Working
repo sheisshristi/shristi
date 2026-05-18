@@ -1,0 +1,106 @@
+🌍 ReGenesis — Step-by-Step Working
+
+1️⃣ Power ON
+
+The ESP32 starts the whole system and initializes:
+
+DHT22 sensor
+
+OLED display
+
+LED
+
+buzzer
+
+
+
+---
+
+2️⃣ Temperature & Humidity Detection
+
+The DHT22 sensor continuously reads:
+
+temperature
+
+humidity
+
+
+from the environment.
+
+
+---
+
+3️⃣ Data Processing
+
+ESP32 receives the sensor data and processes it in real time.
+
+
+---
+
+4️⃣ OLED Display Output
+
+The OLED screen displays:
+
+project name
+
+current temperature
+
+humidity level
+
+system status
+
+
+Example:
+
+Temp: 36°C
+Humidity: 62%
+ALERT!
+
+
+---
+
+5️⃣ Safety Check
+
+The system compares the temperature with the safety threshold.
+
+If:
+
+Temperature > 35°C
+
+then it detects danger.
+
+
+---
+
+6️⃣ Alert Activation
+
+When danger is detected:
+
+red LED blinks
+
+buzzer alarm turns ON
+
+OLED shows “ALERT!”
+
+
+
+---
+
+7️⃣ Safe Condition
+
+If temperature becomes normal:
+
+LED turns OFF
+
+buzzer stops
+
+OLED shows “SAFE”
+8️⃣ Continuous Monitoring
+The process repeats every few seconds for real-time disaster/environment monitoring.
+🚨 Purpose of Project
+ReGenesis helps in:
+disaster monitoring
+heat/fire alert systems
+industrial safety
+emergency environmental monitoring
+smart rescue systems
